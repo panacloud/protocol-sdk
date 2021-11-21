@@ -10,6 +10,10 @@ class PanaFactoryEthersV5Contract implements PanaFactoryContract {
 
     }
 
+    getAddress(): string {
+        return this.contract.address;
+    }
+
     generateData(_name:string, _age:BigNumber ) {
         this.contract.generateData(_name, _age);
     }
