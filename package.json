@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "typechain": "node scripts/generateTypechainFiles.ts",
     "build": "hardhat compile && tsc"
   },
   "author": "Panacloud",
@@ -24,7 +24,7 @@
     "ethers": "^5.4.7",
     "hardhat": "^2.6.4",
     "ts-node": "^10.2.1",
-    "typechain": "^5.1.2",
+    "typechain": "^5.2.0",
     "typescript": "^4.4.3"
   }
 }
