@@ -1,5 +1,6 @@
 import { BigNumber } from "@ethersproject/bignumber";
 import { ContractNetworksConfig } from ".";
+import { defaultContractNetworks } from "./configuration/config";
 import PanaFactoryContract from "./contracts/PanaFactory/PanaFactoryContract";
 import EthAdapter from "./ethereumLibs/EthAdapter";
 import ContractManager from "./managers/contractManager";
@@ -23,7 +24,7 @@ class PanacloudSDK {
 
     private async init({ ethAdapter, contractNetworks }: PanacloudSDKConfig): Promise<void> {
         this.#ethAdapter = ethAdapter;
-        this.#contractNetworks = contractNetworks;
+        this.#contractNetworks = { ...defaultContractNetworks, ...contractNetworks };
         const chainId = await this.#ethAdapter.getChainId();
         const contractNetworksConfig = this.#contractNetworks[chainId];
         if(!contractNetworksConfig) {
