@@ -3,8 +3,6 @@ import "@nomiclabs/hardhat-waffle";
 import '@typechain/hardhat'
 import '@nomiclabs/hardhat-ethers'
 import dotenv from 'dotenv';
-import "./tasks/set-greeting";
-import "./tasks/read-greeting";
 
 dotenv.config();
 
