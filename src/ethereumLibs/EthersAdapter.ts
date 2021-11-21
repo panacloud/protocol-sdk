@@ -5,7 +5,7 @@ import { Provider, TransactionResponse } from "@ethersproject/providers";
 import PanaFactoryEthersV5Contract from "../contracts/PanaFactory/PanaFactoryEthersV5Contract";
 import { AbiItem } from "../types";
 import EthAdapter, { EthAdapterTransaction } from "./EthAdapter";
-import { PanaFactory__factory } from '../../typechain/factories/PanaFactory__factory';
+import { PanaFactory__factory } from '../../typechain/src/ethers-v5/factories/PanaFactory__factory';
 
 
 export interface EthersAdapterConfig {

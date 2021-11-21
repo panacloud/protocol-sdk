@@ -27,5 +27,5 @@
       "composite": true,
       "outDir": "dist",
     },
-    "include": ["src", "./typechain"]
+    "include": ["src", "./typechain/src"]
 }

@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import PanaFactoryContract from "./PanaFactoryContract";
-import { PanaFactory, PanaFactoryInterface } from '../../../typechain/PanaFactory';
+import { PanaFactory, PanaFactoryInterface } from '../../../typechain/src/ethers-v5/PanaFactory';
 import { EthersTransactionResult, TransactionOptions } from '../../utils/types';
 import { ContractTransaction } from '@ethersproject/contracts';
 
