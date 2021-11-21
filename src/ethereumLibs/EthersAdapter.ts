@@ -91,3 +91,5 @@ class EthersAdapter implements EthAdapter {
         return this.#provider.call(transaction)
     }
 }
+
+export default EthersAdapter
