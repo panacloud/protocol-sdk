@@ -8,11 +8,30 @@
     "build": "hardhat compile && tsc"
   },
   "author": "Zeeshan Hanif @zeeshanhanif",
-  "license": "ISC",
+  "license": "MIT",
   "files": [
     "dist/**/*",
     "README.md"
   ],
+  "bugs": {
+    "url": "https://github.com/panacloud/protocol-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panacloud/protocol-sdk.git"
+  },
+  "homepage": "https://github.com/panacloud/protocol-sdk",
+  "publishConfig": {
+    "access": "public",
+    "branches": [
+      "main"
+    ]
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
