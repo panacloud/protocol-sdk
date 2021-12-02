@@ -1,8 +1,9 @@
 {
   "name": "@panacloud/protocol-sdk",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2-alpha",
   "description": "Panacloud Protocol SDK",
   "main": "dist/scr/index.d.ts",
+  "typings": "dist/src/index.d.ts",
   "scripts": {
     "typechain": "node scripts/generateTypechainFiles.ts",
     "build": "hardhat compile && tsc"
