@@ -1,7 +1,7 @@
 {
   "name": "@panacloud/protocol-sdk",
   "version": "0.0.0-alpha",
-  "description": "",
+  "description": "Panacloud Protocol SDK",
   "main": "dist/scr/index.d.ts",
   "scripts": {
     "typechain": "node scripts/generateTypechainFiles.ts",
@@ -32,6 +32,12 @@
       "main"
     ]
   },
+  "keywords": [
+    "Panacloud",
+    "Protocol",
+    "SDK",
+    "Ethereum"
+  ],
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
