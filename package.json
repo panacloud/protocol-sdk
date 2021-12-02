@@ -21,17 +21,6 @@
     "url": "git+https://github.com/panacloud/protocol-sdk.git"
   },
   "homepage": "https://github.com/panacloud/protocol-sdk",
-  "publishConfig": {
-    "access": "public",
-    "branches": [
-      "main"
-    ]
-  },
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
   "keywords": [
     "Panacloud",
     "Protocol",
