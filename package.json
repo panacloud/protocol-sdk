@@ -2,7 +2,7 @@
   "name": "@panacloud/protocol-sdk",
   "version": "0.0.2-alpha",
   "description": "Panacloud Protocol SDK",
-  "main": "dist/scr/index.d.ts",
+  "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
   "scripts": {
     "typechain": "node scripts/generateTypechainFiles.ts",
