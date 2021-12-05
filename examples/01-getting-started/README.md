@@ -16,6 +16,9 @@ npm install @panacloud/protocol-sdk
 
 To use SDK is using `Ethers` `v5`, create an instance of the `EthersAdapter`.
 ```JS
+import { EthersAdapter, PanacloudSDK } from "@panacloud/protocol-sdk";
+import { ethers } from 'ethers';
+
 const ethAdapter = new EthersAdapter({
     ethers,
     signer
