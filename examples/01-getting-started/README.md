@@ -2,12 +2,19 @@
 
 Basic example on how to use Panacloud Protocol SDK with React on Client side
 
-#### Install Panacloud Protocol SDK
+## Installation
+
+Install the package:
+
 ```shell
 npm install @panacloud/protocol-sdk
 ```
 
-#### Create and Access Panacloud SDK instance
+## Getting Started
+
+### 1. Set up the SDK using `Ethers`
+
+To use SDK is using `Ethers` `v5`, create an instance of the `EthersAdapter`.
 ```JS
 const ethAdapter = new EthersAdapter({
     ethers,
