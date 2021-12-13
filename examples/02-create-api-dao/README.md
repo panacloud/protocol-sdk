@@ -1,0 +1,29 @@
+# Create API DAO with Panacloud Protocol SDK
+
+Initial example on how to create API DAO using Panacloud Protocol SDK
+
+## Installation
+
+Install the package:
+
+```shell
+npm install @panacloud/protocol-sdk
+```
+
+## Getting Started
+
+### 1. Set up the SDK using `Ethers`
+
+To use SDK is using `Ethers` `v5`, create an instance of the `EthersAdapter`.
+```JS
+import { EthersAdapter, PanacloudSDK } from "@panacloud/protocol-sdk";
+import { ethers } from 'ethers';
+
+const ethAdapter = new EthersAdapter({
+    ethers,
+    signer
+});
+
+const panacloudSDK = await PanacloudSDK.create({ethAdapter});
+console.log("PanaFactory Contract Address",panacloudSDK.getPanaFactoryAddress());
+```
