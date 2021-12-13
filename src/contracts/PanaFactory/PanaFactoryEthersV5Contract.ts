@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import PanaFactoryContract from "./PanaFactoryContract";
 import { PanaFactory, PanaFactoryInterface } from '../../../typechain/src/ethers-v5/PanaFactory';
-import { EthersTransactionResult, TransactionOptions } from '../../utils/types';
+import { APIDAOConfig, APITokenConfig, EthersTransactionResult, TransactionOptions } from '../../utils/types';
 import { ContractTransaction } from '@ethersproject/contracts';
 
 function toTxResult(
@@ -25,6 +25,11 @@ class PanaFactoryEthersV5Contract implements PanaFactoryContract {
         return this.contract.address;
     }
 
+    async createAPIDao(apiTokenConfig:APITokenConfig , apiDAOConfig:APIDAOConfig, options?:TransactionOptions): Promise<EthersTransactionResult> {
+      const txtResponse = await this.contract.createAPIDao(apiTokenConfig,apiDAOConfig);
+      return toTxResult(txtResponse,options);
+    }
+    /*
     async generateData(_name:string, _age:BigNumber, options?:TransactionOptions): Promise<EthersTransactionResult> {
         const txResponse = await this.contract.generateData(_name, _age,options);
         return toTxResult(txResponse,options);
@@ -36,6 +41,6 @@ class PanaFactoryEthersV5Contract implements PanaFactoryContract {
     
     getAge():Promise<BigNumber> {
         return this.contract.getAge();
-    }
+    }*/
 }
 export default PanaFactoryEthersV5Contract;
