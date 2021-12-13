@@ -1,7 +1,8 @@
 import { ContractNetworksConfig } from "./configuration/config";
 import PanacloudSDK, { PanacloudSDKConfig } from "./PanacloudSDK";
 import EthAdapter, { EthAdapterTransaction } from './ethereumLibs/EthAdapter'
-import EthersAdapter, { EthersAdapterConfig } from './ethereumLibs/EthersAdapter'
+import EthersAdapter, { EthersAdapterConfig } from './ethereumLibs/EthersAdapter';
+import { APITokenConfig, APIDAOConfig, TransactionResult  } from './utils/types';
 
 export {
     ContractNetworksConfig,
@@ -10,5 +11,8 @@ export {
     EthAdapter,
     EthAdapterTransaction,
     EthersAdapter,
-    EthersAdapterConfig
+    EthersAdapterConfig,
+    APITokenConfig,
+    APIDAOConfig,
+    TransactionResult
 }
