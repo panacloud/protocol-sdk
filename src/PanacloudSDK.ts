@@ -4,6 +4,7 @@ import { defaultContractNetworks } from "./configuration/config";
 import PanaFactoryContract from "./contracts/PanaFactory/PanaFactoryContract";
 import EthAdapter from "./ethereumLibs/EthAdapter";
 import ContractManager from "./managers/contractManager";
+import { TransactionResult, APITokenConfig , APIDAOConfig} from "./utils/types";
 
 export interface PanacloudSDKConfig {
     ethAdapter: EthAdapter
@@ -35,6 +36,14 @@ class PanacloudSDK {
 
     getPanaFactoryAddress(): string {
         return this.#panaFactroyContract.getAddress();
+    }
+
+    getPanaFactory(): PanaFactoryContract {
+        return this.#panaFactroyContract;
+    }
+
+    createAPIDao(apiTokenConfig:APITokenConfig, apiDAOConfig: APIDAOConfig):  Promise<TransactionResult> {
+        return this.#panaFactroyContract.createAPIDao(apiTokenConfig, apiDAOConfig);
     }
 
     getEthAdapter(): EthAdapter {
