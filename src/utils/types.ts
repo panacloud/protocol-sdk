@@ -16,3 +16,28 @@ export interface EthersTransactionResult extends BaseTransactionResult {
   transactionResponse: ContractTransaction
   options?: TransactionOptions
 }
+
+export interface TransactionResult extends BaseTransactionResult {
+  //promiEvent?: PromiEvent<TransactionReceipt>
+  transactionResponse?: ContractTransaction
+  options?: TransactionOptions
+}
+
+export interface APIDAOConfig {
+  apiProposalId:string;
+  apiId:string;
+  daoName:string;
+  votingSupportPercentage: number;
+  votingMinimumApprovalPercentage: number;
+  voteDuration: number;
+}
+
+export interface APITokenConfig {
+  apiTokenName: string;
+  apiTokenSymbol: string;
+  maxApiTokenSupply: number;
+  initialApiTokenSupply: number;
+  developerSharePercentage: number;
+  apiInvestorSharePercentage: number;
+  thresholdForSubscriberMinting: number;
+}
