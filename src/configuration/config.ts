@@ -17,6 +17,6 @@ export const defaultContractNetworks : ContractNetworksConfig = {
     },*/
     // rinkeby
     4: {
-        panaFactoryAddress:"0xC58B924Feb50C42f4F6226D50c3f53f11ACbD536" 
+        panaFactoryAddress:"0x46BADfdE470edf148B17562BCB687C3DDB77BF04" 
     }
 }
