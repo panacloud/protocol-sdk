@@ -1,6 +1,6 @@
 {
   "name": "@panacloud/protocol-sdk",
-  "version": "0.0.4-alpha",
+  "version": "0.0.5-alpha",
   "description": "Panacloud Protocol SDK",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
