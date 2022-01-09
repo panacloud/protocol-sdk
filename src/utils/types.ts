@@ -27,9 +27,9 @@ export interface APIDAOConfig {
   apiProposalId:string;
   apiId:string;
   daoName:string;
-  votingSupportPercentage: number;
-  votingMinimumApprovalPercentage: number;
-  voteDuration: number;
+  proposalThresholdPercent: number;
+  quorumVotesPercent: number;
+  votingPeriod: number;
 }
 
 export interface APITokenConfig {
