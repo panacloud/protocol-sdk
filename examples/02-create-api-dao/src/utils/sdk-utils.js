@@ -29,9 +29,9 @@ export const setupSDK = async (signer)=>{
         apiProposalId: "NAN",
         apiId: "demo-api",
         daoName: "Demo DAO",
-        votingSupportPercentage: BigNumber.from(50),
-        votingMinimumApprovalPercentage: BigNumber.from(20),
-        voteDuration: BigNumber.from(24).mul(60).mul(60)
+        proposalThresholdPercent: BigNumber.from(10000),
+        quorumVotesPercent: BigNumber.from(40000),
+        votingPeriod: BigNumber.from(24).mul(60).mul(60).div(15)
       };
     
 
