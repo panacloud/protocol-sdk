@@ -41,3 +41,12 @@ export interface APITokenConfig {
   apiInvestorSharePercentage: number;
   thresholdForSubscriberMinting: number;
 }
+
+export interface Invoice {
+  apiToken: string; // API Token Address
+  invoiceNumber: number;
+  dueDate: number;
+  invoiceMonth: number; // From 1 to 12
+  totalAmount: number;
+  invoicePayee: string; // API Subscriber Address
+}

@@ -1,10 +1,13 @@
 import { ContractNetworksConfig, defaultContractNetworks } from "../configuration/config";
+import PanacloudPlatformContract from "../contracts/PanacloudPlatform/PanacloudPlatformContract";
 import PanaFactoryContract from "../contracts/PanaFactory/PanaFactoryContract";
 import EthAdapter from "../ethereumLibs/EthAdapter";
 
 class ContractManager {
     #contractNetworks!: ContractNetworksConfig
     #panaFactroyContract!: PanaFactoryContract
+    // Still need to see how to use it
+    #panacloudPlatform!: PanacloudPlatformContract
 
     static async create(ethAdapter: EthAdapter, panaFactoryAddress:string,
                         contractNetworks?: ContractNetworksConfig): Promise<ContractManager>{
