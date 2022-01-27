@@ -19,9 +19,10 @@ const safeContracts = [
   `${safeContractsPath}/MultiSend.json`,
 ].join(' ')
 */
-const pataContractsPath = './demo-contracts/build/artifacts/contracts'
-const pataContracts = [
-  `${pataContractsPath}/PanaFactory.sol/PanaFactory.json`
+const panaContractsPath = './demo-contracts/build/artifacts/contracts'
+const panaContracts = [
+  `${panaContractsPath}/PanaFactory.sol/PanaFactory.json`,
+  `${panaContractsPath}/PanacloudPlatform.sol/PanacloudPlatform.json`
 ].join(' ')
 //D:\developmentData\PanaCloud\projects\panacloud-store\protocol-sdk\demo-contracts\build\artifacts\contracts\PanaFactory.sol\PanaFactory.json
 // Remove existing Typechain files
@@ -64,5 +65,5 @@ function moveTypechainFiles(typechainVersion, inDir, outDir) {
 const ethersV5 = 'ethers-v5'
 
 // Src: Ethers V5 types
-generateTypechainFiles(ethersV5, outDirSrc, pataContracts)
+generateTypechainFiles(ethersV5, outDirSrc, panaContracts)
 moveTypechainFiles(ethersV5, typeChainDirectorySrcPath, typeChainDirectoryBuildPath)
