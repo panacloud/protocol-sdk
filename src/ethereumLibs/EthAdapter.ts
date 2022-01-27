@@ -1,4 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber';
+import PanacloudPlatformContract from '../contracts/PanacloudPlatform/PanacloudPlatformContract';
 import PanaFactoryContract from '../contracts/PanaFactory/PanaFactoryContract';
 import { AbiItem } from '../types';
 
@@ -16,7 +17,8 @@ interface EthAdapter {
     getBalance(address: string): Promise<BigNumber>
     getChainId(): Promise<number>
     getContract(address: string, abi: AbiItem[]): any
-    getPanaFactoryContract(safeAddress: string): Promise<PanaFactoryContract>
+    getPanaFactoryContract(panaFactoryAddress: string): Promise<PanaFactoryContract>
+    getPanacloudPlatformContract(panacloudPlatformAddress: string): Promise<PanacloudPlatformContract>
     getContractCode(address: string): Promise<string>
     getTransaction(transactionHash: string): Promise<any>
     getSignerAddress(): Promise<string>

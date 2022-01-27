@@ -6,6 +6,9 @@ import PanaFactoryEthersV5Contract from "../contracts/PanaFactory/PanaFactoryEth
 import { AbiItem } from "../types";
 import EthAdapter, { EthAdapterTransaction } from "./EthAdapter";
 import { PanaFactory__factory } from '../../typechain/src/ethers-v5/factories/PanaFactory__factory';
+import PanacloudPlatformContract from "../contracts/PanacloudPlatform/PanacloudPlatformContract";
+import { PanacloudPlatform__factory } from "../../typechain/src/ethers-v5";
+import PanacloudPlatformEthersV5Contract from "../contracts/PanacloudPlatform/PanacloudPlatformEthersV5Contract";
 
 
 export interface EthersAdapterConfig {
@@ -64,6 +67,16 @@ class EthersAdapter implements EthAdapter {
         const panaFactoryContract = PanaFactory__factory.connect(panaFactoryAddress, this.#signer)
         const wrapperPanaFactoryContract = new PanaFactoryEthersV5Contract(panaFactoryContract)
         return wrapperPanaFactoryContract
+    }
+
+    async getPanacloudPlatformContract(panacloudPlatformAddress: string): Promise<PanacloudPlatformContract> {
+        const panacloudPlatformContractCode = await this.getContractCode(panacloudPlatformAddress);
+        if (panacloudPlatformContractCode === '0x') {
+            throw new Error('PanacloudPlatform contract is not deployed in the current network');
+        }
+        const panacloudPlatformContract = PanacloudPlatform__factory.connect(panacloudPlatformAddress, this.#signer);
+        const wrapperPanacloudPlatformContract = new PanacloudPlatformEthersV5Contract(panacloudPlatformContract);
+        return wrapperPanacloudPlatformContract;
     }
 
     async getContractCode(address: string): Promise<string> {
