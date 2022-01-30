@@ -88,6 +88,18 @@ const transactionReceipt = await transactionResult.transactionResponse.wait();
 console.log("Transaction completed: ",transactionReceipt);
 ```
 
+Invoice Data Type
+```JS
+export interface Invoice {
+  apiToken: string; // API Token Address
+  invoiceNumber: BigNumber;
+  dueDate: BigNumber;
+  invoiceMonth: BigNumber; // From 1 to 12
+  totalAmount: BigNumber;
+  invoicePayee: string; // API Subscriber Address
+}
+```
+
 ### 4. Get API Developers Earning Details `Ethers`
 
 ```JS
@@ -99,6 +111,22 @@ console.log("API Details.totalClaimable = ", ethers.utils.formatEther(apiDetails
 console.log("API Details.totalClaimed = ", ethers.utils.formatEther(apiDetails.totalClaimed));
 console.log("API Details.totalEarned = ", ethers.utils.formatEther(apiDetails.totalEarned));
 console.log("API Details.userDAODetails array = ", apiDetails.userDAODetails);
+
+```
+UserDAODetails and APIDevDetails Data Type
+```JS
+export interface UserDAODetails {
+  apiDao: string;
+  apiToken: string;
+}
+
+export interface APIDevDetails {
+  apiDev: string;
+  totalEarned: BigNumber
+  totalClaimable: BigNumber
+  totalClaimed: BigNumber
+  userDAODetails: UserDAODetails[]
+}
 ```
 
 ### 5. Get Invoice List of API `Ethers`
