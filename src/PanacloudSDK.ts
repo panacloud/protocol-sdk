@@ -53,9 +53,11 @@ class PanacloudSDK {
         return this.#panaFactroyContract.createAPIDao(apiTokenConfig, apiDAOConfig);
     }
 
+    /*
     payInvoice(apiDev: string, apiDao: string, invoice: Invoice): Promise<TransactionResult> {
+        this.#panacloudPlatformContract.
         return this.#panacloudPlatformContract.payInvoice(apiDev,apiDao,invoice);
-    }
+    }*/
 
     getEthAdapter(): EthAdapter {
         return this.#ethAdapter;

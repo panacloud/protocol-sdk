@@ -1,4 +1,5 @@
 import { ContractTransaction } from '@ethersproject/contracts'
+import { BigNumber } from 'ethers';
 
 export interface TransactionOptions {
   from?: string
@@ -44,9 +45,22 @@ export interface APITokenConfig {
 
 export interface Invoice {
   apiToken: string; // API Token Address
-  invoiceNumber: number;
-  dueDate: number;
-  invoiceMonth: number; // From 1 to 12
-  totalAmount: number;
+  invoiceNumber: BigNumber;
+  dueDate: BigNumber;
+  invoiceMonth: BigNumber; // From 1 to 12
+  totalAmount: BigNumber;
   invoicePayee: string; // API Subscriber Address
+}
+
+export interface UserDAODetails {
+  apiDao: string;
+  apiToken: string;
+}
+
+export interface APIDevDetails {
+  apiDev: string;
+  totalEarned: BigNumber
+  totalClaimable: BigNumber
+  totalClaimed: BigNumber
+  userDAODetails: UserDAODetails[]
 }
