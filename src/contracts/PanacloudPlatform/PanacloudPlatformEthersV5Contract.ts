@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber';
 
 import { PanacloudPlatform  } from '../../../typechain/src/ethers-v5/PanacloudPlatform';
-import { APIDAOConfig, APIDevDetails, APITokenConfig, BaseTransactionResult, EthersTransactionResult, Invoice, TransactionOptions } from '../../utils/types';
+import { APIDAOConfig, APIDevDetails, APITokenConfig, BaseTransactionResult, EthersTransactionResult, Invoice, TransactionOptions, Claim } from '../../utils/types';
 import { ContractTransaction } from '@ethersproject/contracts';
 import PanacloudPlatformContract from './PanacloudPlatformContract';
 
@@ -44,7 +44,16 @@ class PanacloudPlatformEthersV5Contract implements PanacloudPlatformContract {
     }
 
     async getAPIInvoices(apiDevAddress: string, apiTokenAddress: string): Promise<Invoice[]> {
-      return this.contract.getAPIInvoices(apiDevAddress,apiTokenAddress);;
+      return this.contract.getAPIInvoices(apiDevAddress,apiTokenAddress);
+    }
+
+    async claimEarnings(claimAmount: BigNumber, options?:TransactionOptions): Promise<EthersTransactionResult> {
+      const txtResponse = await this.contract.claimEarnings(claimAmount);
+      return toTxResult(txtResponse, options);
+    }
+
+    async getClaimHistory(): Promise<Claim[]> {
+      return this.contract.getClaimHistory();
     }
 }
 export default PanacloudPlatformEthersV5Contract;
