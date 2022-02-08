@@ -7,7 +7,7 @@ const DaiABI = require("../abi/DAIToken.json").abi;
 // NOTE: Second assumption, this example should be run with diffrent address than '02-create-api-dao' so that we can
 //       simulate subscriber and api owner as two different entity
 // NOTE: Also Claim Earning should be called after pay-invoice so we have payment to be received
-export const getEarningHistory = async (signer)=>{
+export const getClaimHistory = async (signer)=>{
     const ethAdapter = new EthersAdapter({
         ethers,
         signer

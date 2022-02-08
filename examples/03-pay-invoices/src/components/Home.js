@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { claimEarnings } from "../utils/claim-earnings";
 import { getDevEarningDetails } from "../utils/dev-earnings";
-import { getEarningHistory } from "../utils/get-earnings-history";
+import { getClaimHistory } from "../utils/get-claim-history";
 import { getInvoices } from "../utils/get-invoices";
 import { invoicePayment } from "../utils/pay-invoice";
 import { setupSDK } from "../utils/sdk-utils";
@@ -95,8 +95,8 @@ function Home() {
       }}> 04 Claim Earnings</button></div><br/>
 
       <div><button onClick={async ()=>{
-        await getEarningHistory(library.getSigner(0));
-      }}> 05 Get Earning History</button></div><br/>
+        await getClaimHistory(library.getSigner(0));
+      }}> 05 Get Claim History</button></div><br/>
     </div>
     
   );
