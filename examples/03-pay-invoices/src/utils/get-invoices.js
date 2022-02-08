@@ -15,7 +15,7 @@ export const getInvoices = async (signer)=>{
     console.log("PanacloudPlatform Address",panacloudSDK.getPanacloudPlatform().getAddress());
     
     const panacloudPlatformContract = panacloudSDK.getPanacloudPlatform();
-    const invoiceList = await panacloudPlatformContract.getAPIInvoices(await signer.getAddress(), "0x6c6719e351210d651187b9ccb2f4b6e0dc06a7f1");
+    const invoiceList = await panacloudPlatformContract.getAPIInvoices(await signer.getAddress(), "0x8d98fbcdac3d9320d27222b0894fac21c798f179");
     console.log("InvoiceList = ", invoiceList);
     console.log("InvoiceList[0] = ", invoiceList[0]);
     console.log("InvoiceList[0].apiToken = ", invoiceList[0].apiToken);

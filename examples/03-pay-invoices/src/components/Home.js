@@ -1,7 +1,9 @@
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
+import { claimEarnings } from "../utils/claim-earnings";
 import { getDevEarningDetails } from "../utils/dev-earnings";
+import { getEarningHistory } from "../utils/get-earnings-history";
 import { getInvoices } from "../utils/get-invoices";
 import { invoicePayment } from "../utils/pay-invoice";
 import { setupSDK } from "../utils/sdk-utils";
@@ -87,7 +89,16 @@ function Home() {
       <div><button onClick={()=>{
         getInvoiceList();
       }}> 03 Get Invoice List</button></div><br/>
+
+      <div><button onClick={async ()=>{
+        await claimEarnings(library.getSigner(0));
+      }}> 04 Claim Earnings</button></div><br/>
+
+      <div><button onClick={async ()=>{
+        await getEarningHistory(library.getSigner(0));
+      }}> 05 Get Earning History</button></div><br/>
     </div>
+    
   );
 }
 

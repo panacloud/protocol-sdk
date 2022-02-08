@@ -2,7 +2,6 @@ import { EthersAdapter, PanacloudSDK, Invoice} from "@panacloud/protocol-sdk";
 import { ethers } from 'ethers';
 import { BigNumber } from '@ethersproject/bignumber';
 
-const DaiABI = require("../abi/DAIToken.json").abi;
 
 // NOTE: This example assume that you have run the example 2 '02-create-api-dao' and you have addresses of APIToken and APIDAO
 // NOTE: Second assumption, this example should be run with diffrent address than '02-create-api-dao' so that we can
