@@ -64,3 +64,9 @@ export interface APIDevDetails {
   totalClaimed: BigNumber
   userDAODetails: UserDAODetails[]
 }
+
+export interface Claim {
+  apiDev: string
+  claimedAmount: BigNumber
+  timestamp: BigNumber
+}
