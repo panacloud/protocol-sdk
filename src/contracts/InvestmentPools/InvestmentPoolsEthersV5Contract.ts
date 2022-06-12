@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 
 import { ContractTransaction } from '@ethersproject/contracts';
 import { InvestmentPools } from '../../../typechain/src/ethers-v5';
-import { BaseTransactionResult, EthersTransactionResult, PoolInfo, TransactionOptions } from '../../utils/types';
+import { EthersTransactionResult, PoolInfo, TransactionOptions } from '../../utils/types';
 import InvestmentPoolsContract from './InvestmentPoolsContract';
 
 function toTxResult(
@@ -19,7 +19,6 @@ function toTxResult(
 class InvestmentPoolsEthersV5Contract implements InvestmentPoolsContract {
 
     constructor(public contract:InvestmentPools) {
-
     }
 
     getAddress(): string {
