@@ -70,3 +70,23 @@ export interface Claim {
   claimedAmount: BigNumber
   timestamp: BigNumber
 }
+
+export interface PoolInfo {
+  poolIndex:BigNumber
+        
+  startDate:BigNumber
+  duration:BigNumber
+  tokenPrice:BigNumber
+  tokensToBeIssued:BigNumber
+  minimumInvestmentRequired:BigNumber
+  tokenPerInvestor:BigNumber
+        
+  apiToken:string
+  apiDev:string
+  poolFundingSuccessfull:boolean
+  poolActive:boolean
+
+  totalFundApproved:BigNumber
+  fundsAvailableFromClaim:BigNumber
+  fundsClaimed:BigNumber
+}
