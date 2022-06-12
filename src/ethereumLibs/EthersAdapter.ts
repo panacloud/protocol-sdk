@@ -7,8 +7,15 @@ import { AbiItem } from "../types";
 import EthAdapter, { EthAdapterTransaction } from "./EthAdapter";
 import { PanaFactory__factory } from '../../typechain/src/ethers-v5/factories/PanaFactory__factory';
 import PanacloudPlatformContract from "../contracts/PanacloudPlatform/PanacloudPlatformContract";
-import { PanacloudPlatform__factory } from "../../typechain/src/ethers-v5";
+import { InvestmentPoolsManager__factory, InvestmentPools__factory, PanacloudPlatform__factory } from "../../typechain/src/ethers-v5";
 import PanacloudPlatformEthersV5Contract from "../contracts/PanacloudPlatform/PanacloudPlatformEthersV5Contract";
+
+
+
+import InvestmentPoolsContract from "../contracts/InvestmentPools/InvestmentPoolsContract";
+import InvestmentPoolsEthersV5Contract from "../contracts/InvestmentPools/InvestmentPoolsEthersV5Contract";
+import InvestmentPoolsManagerContract from "../contracts/InvestmentPoolsManager/InvestmentPoolsManagerContract";
+import InvestmentPoolsManagerEthersV5Contract from "../contracts/InvestmentPoolsManager/InvestmentPoolsManagerEthersV5Contract";
 
 
 export interface EthersAdapterConfig {
@@ -77,6 +84,26 @@ class EthersAdapter implements EthAdapter {
         const panacloudPlatformContract = PanacloudPlatform__factory.connect(panacloudPlatformAddress, this.#signer);
         const wrapperPanacloudPlatformContract = new PanacloudPlatformEthersV5Contract(panacloudPlatformContract);
         return wrapperPanacloudPlatformContract;
+    }
+
+    async getInvestmentPoolsContract(investmentPoolsAddress: string): Promise<InvestmentPoolsContract> {
+        const investmentPoolsContractCode = await this.getContractCode(investmentPoolsAddress);
+        if (investmentPoolsContractCode === '0x') {
+            throw new Error('InvestmentPools contract is not deployed in the current network');
+        }
+        const investmentPoolsContract = InvestmentPools__factory.connect(investmentPoolsAddress, this.#signer);
+        const wrapperInvestmentPoolsContract = new InvestmentPoolsEthersV5Contract(investmentPoolsContract);
+        return wrapperInvestmentPoolsContract;
+    }
+
+    async getInvestmentPoolsManagerContract(investmentPoolsManagerContractAddress: string): Promise<InvestmentPoolsManagerContract> {
+        const investmentPoolsManagerContractCode = await this.getContractCode(investmentPoolsManagerContractAddress);
+        if (investmentPoolsManagerContractCode === '0x') {
+            throw new Error('InvestmentPoolsManager contract is not deployed in the current network');
+        }
+        const investmentPoolsManagerContract = InvestmentPoolsManager__factory.connect(investmentPoolsManagerContractAddress, this.#signer);
+        const wrapperInvestmentPoolsManagerContract = new InvestmentPoolsManagerEthersV5Contract(investmentPoolsManagerContract);
+        return wrapperInvestmentPoolsManagerContract;
     }
 
     async getContractCode(address: string): Promise<string> {
