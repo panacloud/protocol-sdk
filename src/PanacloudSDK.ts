@@ -1,6 +1,8 @@
 import { BigNumber } from "@ethersproject/bignumber";
 import { ContractNetworksConfig } from ".";
 import { defaultContractNetworks } from "./configuration/config";
+import InvestmentPoolsContract from "./contracts/InvestmentPools/InvestmentPoolsContract";
+import InvestmentPoolsManagerContract from "./contracts/InvestmentPoolsManager/InvestmentPoolsManagerContract";
 import PanacloudPlatformContract from "./contracts/PanacloudPlatform/PanacloudPlatformContract";
 import PanaFactoryContract from "./contracts/PanaFactory/PanaFactoryContract";
 import EthAdapter from "./ethereumLibs/EthAdapter";
@@ -18,6 +20,8 @@ class PanacloudSDK {
     #contractNetworks!: ContractNetworksConfig
     #panaFactroyContract!: PanaFactoryContract
     #panacloudPlatformContract!: PanacloudPlatformContract
+    #investmentPoolsContract!: InvestmentPoolsContract
+    #investmentPoolsManagerContract!: InvestmentPoolsManagerContract
 
     static async create({ethAdapter, contractNetworks}: PanacloudSDKConfig): Promise<PanacloudSDK> {
         const panacloudSdk = new PanacloudSDK();
@@ -35,6 +39,8 @@ class PanacloudSDK {
         }
         this.#panaFactroyContract = await ethAdapter.getPanaFactoryContract(contractNetworksConfig.panaFactoryAddress);
         this.#panacloudPlatformContract = await ethAdapter.getPanacloudPlatformContract(contractNetworksConfig.panacloudPlatform);
+        this.#investmentPoolsContract = await ethAdapter.getInvestmentPoolsContract(contractNetworksConfig.investmentPools);
+        this.#investmentPoolsManagerContract = await ethAdapter.getInvestmentPoolsManagerContract(contractNetworksConfig.investmentPoolsManager);
     }
 
     getPanaFactoryAddress(): string {
@@ -47,6 +53,13 @@ class PanacloudSDK {
 
     getPanacloudPlatform(): PanacloudPlatformContract {
         return this.#panacloudPlatformContract;
+    }
+
+    getInvestmentPools(): InvestmentPoolsContract {
+        return this.#investmentPoolsContract;
+    }
+    getInvestmentPoolsManager(): InvestmentPoolsManagerContract {
+        return this.#investmentPoolsManagerContract;
     }
 
     createAPIDao(apiTokenConfig:APITokenConfig, apiDAOConfig: APIDAOConfig):  Promise<TransactionResult> {
