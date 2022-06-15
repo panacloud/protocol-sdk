@@ -20,9 +20,9 @@ export const defaultContractNetworks : ContractNetworksConfig = {
     },*/
     // rinkeby
     4: {
-        panaFactoryAddress:"0x8C252d76FAE65509E388f88c72DB489F02c41094",
-        panacloudPlatform:"0xa8234cCcec0AeD396C5aD9721c5d2dB5c8E035e8",
-        investmentPools:"0xa8234cCcec0AeD396C5aD9721c5d2dB5c8E035e8",
-        investmentPoolsManager:"0xa8234cCcec0AeD396C5aD9721c5d2dB5c8E035e8"
+        panaFactoryAddress:"0x6837cBd683233bD1d838480A366A2a84DDB3B617",
+        panacloudPlatform:"0x1d8199F217EB923280E7Ed45304bD5028B5678E7",
+        investmentPools:"0xa5aE646cc992b90D835e8F0b892fFf1834Aaa3d1",
+        investmentPoolsManager:"0x16F4E3D86a5DDFEdC6064f2aC7e733F848cbEE14"
     }
 }

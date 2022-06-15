@@ -2,7 +2,7 @@ import { ContractNetworksConfig } from "./configuration/config";
 import PanacloudSDK, { PanacloudSDKConfig } from "./PanacloudSDK";
 import EthAdapter, { EthAdapterTransaction } from './ethereumLibs/EthAdapter'
 import EthersAdapter, { EthersAdapterConfig } from './ethereumLibs/EthersAdapter';
-import { APITokenConfig, APIDAOConfig, TransactionResult, Invoice, UserDAODetails, APIDevDetails, Claim } from './utils/types';
+import { APITokenConfig, APIDAOConfig, TransactionResult, Invoice, UserDAODetails, APIDevDetails, Claim, PoolInfo } from './utils/types';
 
 export {
     ContractNetworksConfig,
@@ -18,5 +18,6 @@ export {
     Invoice,
     UserDAODetails,
     APIDevDetails,
-    Claim
+    Claim, 
+    PoolInfo
 }
