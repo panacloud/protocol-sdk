@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import { applyForInvestmentPool } from "../utils/apply-for-investment-pool";
 import { createInvestmentPool } from "../utils/create-investment-pool";
+import { getPoolInfoList } from "../utils/get-pool-info-list";
 import { setupSDK } from "../utils/sdk-utils";
 
 function Home() {
@@ -64,6 +65,10 @@ function Home() {
     await applyForInvestmentPool(library.getSigner(0));
   }
 
+  const poolInfoList = async ()=>{
+    await getPoolInfoList(library.getSigner(0));
+  }
+
   return (
     <div>
       <div>Hello Web3 World</div><br/>
@@ -84,6 +89,14 @@ function Home() {
             investmentApply();
           }}> 
           02 Apply for investment pool (only Owner of Contract can call this action)
+        </button>
+      </div><br/>
+
+      <div>
+        <button onClick={()=>{
+            poolInfoList();
+          }}> 
+          03 Get Pool Info List
         </button>
       </div><br/>
     </div>
