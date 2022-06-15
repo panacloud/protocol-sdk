@@ -43,5 +43,9 @@ class InvestmentPoolsEthersV5Contract implements InvestmentPoolsContract {
         return this.contract.getInvestmentPool(apiToken);
     }
 
+    async getPoolInfoList(): Promise<PoolInfo[]> {
+        return this.contract.getPoolInfoList();
+    }
+
 }
 export default InvestmentPoolsEthersV5Contract;

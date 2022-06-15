@@ -9,6 +9,7 @@ interface InvestmentPoolsContract {
                         Promise<BaseTransactionResult>;
   createPaymentMilestoneClaim(apiToken:string, amountToBeReleased:BigNumber):Promise<BaseTransactionResult>;
   getInvestmentPool(apiToken:string):Promise<PoolInfo>;
+  getPoolInfoList(): Promise<PoolInfo[]>;
 }
 
 export default InvestmentPoolsContract
