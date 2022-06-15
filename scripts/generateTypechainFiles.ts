@@ -22,7 +22,9 @@ const safeContracts = [
 const panaContractsPath = './demo-contracts/build/artifacts/contracts'
 const panaContracts = [
   `${panaContractsPath}/PanaFactory.sol/PanaFactory.json`,
-  `${panaContractsPath}/PanacloudPlatform.sol/PanacloudPlatform.json`
+  `${panaContractsPath}/PanacloudPlatform.sol/PanacloudPlatform.json`,
+  `${panaContractsPath}/investments/InvestmentPools.sol/InvestmentPools.json`,
+  `${panaContractsPath}/investments/InvestmentPoolsManager.sol/InvestmentPoolsManager.json`
 ].join(' ')
 //D:\developmentData\PanaCloud\projects\panacloud-store\protocol-sdk\demo-contracts\build\artifacts\contracts\PanaFactory.sol\PanaFactory.json
 // Remove existing Typechain files
