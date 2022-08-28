@@ -83,10 +83,22 @@ export interface PoolInfo {
         
   apiToken:string
   apiDev:string
-  poolFundingSuccessfull:boolean
+  poolFundingStatus:BigNumber // 1=In Progress, 2=Successfull, 3=Failed 
   poolActive:boolean
 
   totalFundApproved:BigNumber
   fundsAvailableFromClaim:BigNumber
   fundsClaimed:BigNumber
+}
+
+export interface PoolInvestmentDetails {
+  poolIndex:BigNumber
+  apiToken: string
+  whitelistingStartDate:BigNumber
+  whitelistingEndDate:BigNumber
+
+  fundCollected: BigNumber
+  tokenIssued: BigNumber
+  fundingFailed: boolean;
+
 }
