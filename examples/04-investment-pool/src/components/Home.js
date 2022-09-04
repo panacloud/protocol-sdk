@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { applyForInvestmentPool } from "../utils/apply-for-investment-pool";
 import { createInvestmentPool } from "../utils/create-investment-pool";
 import { getPoolInfoList } from "../utils/get-pool-info-list";
+import { getPoolInfoAndDetails } from "../utils/getPoolInfoAndDetails";
+import { investInPool } from "../utils/invest-in-pool";
 import { setupSDK } from "../utils/sdk-utils";
 
 function Home() {
@@ -65,8 +67,16 @@ function Home() {
     await applyForInvestmentPool(library.getSigner(0));
   }
 
+  const investmentPoolAndDetails = async ()=>{
+    await getPoolInfoAndDetails(library.getSigner(0));
+  }
+
   const poolInfoList = async ()=>{
     await getPoolInfoList(library.getSigner(0));
+  }
+
+  const investInPoolByUser = async ()=>{
+    await investInPool(library.getSigner(0));
   }
 
   return (
@@ -86,9 +96,25 @@ function Home() {
 
       <div>
         <button onClick={()=>{
+            investmentPoolAndDetails();
+          }}> 
+          02 Get Specific Pool Info and Details 
+        </button>
+      </div><br/>
+
+      <div>
+        <button onClick={()=>{
             investmentApply();
           }}> 
-          02 Apply for investment pool (only Owner of Contract can call this action)
+          03 Apply for investment pool (only Owner of Contract can call this action)
+        </button>
+      </div><br/>
+
+      <div>
+        <button onClick={()=>{
+            investInPoolByUser();
+          }}> 
+          04 Invest In Pool
         </button>
       </div><br/>
 
@@ -96,7 +122,7 @@ function Home() {
         <button onClick={()=>{
             poolInfoList();
           }}> 
-          03 Get Pool Info List
+          05 Get Pool Info List
         </button>
       </div><br/>
     </div>
