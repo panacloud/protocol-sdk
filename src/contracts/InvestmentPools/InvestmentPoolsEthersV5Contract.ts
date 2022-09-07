@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 
 import { ContractTransaction } from '@ethersproject/contracts';
 import { InvestmentPools } from '../../../typechain/src/ethers-v5';
-import { EthersTransactionResult, PoolInfo, PoolInvestmentDetails, TransactionOptions } from '../../utils/types';
+import { EthersTransactionResult, InvestorDetails, PoolInfo, PoolInvestmentDetails, TransactionOptions } from '../../utils/types';
 import InvestmentPoolsContract from './InvestmentPoolsContract';
 
 function toTxResult(
@@ -66,6 +66,15 @@ class InvestmentPoolsEthersV5Contract implements InvestmentPoolsContract {
       return toTxResult(txtResponse, options);
     }
 
+    async getInvestorDetailForAPIToken(apiToken:string, investor: string): Promise<InvestorDetails> {
+      return this.contract.getInvestorDetailForAPIToken(apiToken, investor);
+    }
+
+    async getInvestorPoolList(investor:string): Promise<PoolInfo[]> {
+      return this.contract.getInvestorPoolList(investor);
+    }
+
+    
     // Only Owner called functions, will be removed in future
     async updatetPoolFundingStatus(apiToken:string, poolFundingStatus:BigNumber, options?:TransactionOptions): Promise<EthersTransactionResult> {
       const txtResponse = await this.contract.updatetPoolFundingStatus(apiToken, poolFundingStatus);

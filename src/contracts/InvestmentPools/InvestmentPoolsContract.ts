@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { BaseTransactionResult, PoolInfo, PoolInvestmentDetails } from '../../utils/types';
+import { BaseTransactionResult, InvestorDetails, PoolInfo, PoolInvestmentDetails } from '../../utils/types';
 
 interface InvestmentPoolsContract {
   getAddress(): string;
@@ -21,6 +21,9 @@ interface InvestmentPoolsContract {
   // Only Owner called functions, will be removed in future
   updatetPoolFundingStatus(apiToken:string, poolFundingStatus:BigNumber): Promise<BaseTransactionResult>;
   togglePoolActiveStatus(apiToken:string): Promise<BaseTransactionResult>;
+
+  getInvestorDetailForAPIToken(apiToken:string, investor: string):Promise<InvestorDetails>;
+  getInvestorPoolList(investor:string):Promise<PoolInfo[]>;
 
 
 }
