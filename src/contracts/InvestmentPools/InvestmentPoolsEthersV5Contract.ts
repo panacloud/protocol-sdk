@@ -25,11 +25,11 @@ class InvestmentPoolsEthersV5Contract implements InvestmentPoolsContract {
       return this.contract.address;
     }
 
-    async createInvestmentPool(apiDev:string, apiToken:string,  startDate:BigNumber, duration:BigNumber, 
+    async createInvestmentPool(apiDev:string, apiToken:string,  startDate:BigNumber, endDate:BigNumber, 
         tokenPrice:BigNumber, tokensToBeIssued:BigNumber, minimumInvestmentRequired:BigNumber, 
         tokenPerInvestor:BigNumber, whitelistingStartDate:BigNumber, whitelistingEndDate:BigNumber, options?:TransactionOptions):  Promise<EthersTransactionResult> {
 
-        const txtResponse = await this.contract.createInvestmentPool(apiDev, apiToken, startDate, duration, 
+        const txtResponse = await this.contract.createInvestmentPool(apiDev, apiToken, startDate, endDate, 
                             tokenPrice, tokensToBeIssued, minimumInvestmentRequired, tokenPerInvestor, whitelistingStartDate, whitelistingEndDate);
         return toTxResult(txtResponse, options);
     }
@@ -37,6 +37,11 @@ class InvestmentPoolsEthersV5Contract implements InvestmentPoolsContract {
     async createPaymentMilestoneClaim(apiToken:string, amountToBeReleased:BigNumber, options?:TransactionOptions):Promise<EthersTransactionResult> {
         const txtResponse = await this.contract.createPaymentMilestoneClaim(apiToken,amountToBeReleased);
         return toTxResult(txtResponse, options);
+    }
+
+    async claimMilestonePayment(apiToken:string, options?:TransactionOptions):Promise<EthersTransactionResult> {
+      const txtResponse = await this.contract.claimMilestonePayment(apiToken);
+      return toTxResult(txtResponse, options);
     }
 
     async applyForInvestmentPool(apiToken:string, options?:TransactionOptions): Promise<EthersTransactionResult> {
@@ -61,6 +66,25 @@ class InvestmentPoolsEthersV5Contract implements InvestmentPoolsContract {
         return this.contract.getPoolInfoList();
     }
 
+    // Only Owner called functions, will be removed in future
+    async updatetPoolFundingStatus(apiToken:string, poolFundingStatus:BigNumber, options?:TransactionOptions): Promise<EthersTransactionResult> {
+      const txtResponse = await this.contract.updatetPoolFundingStatus(apiToken, poolFundingStatus);
+      return toTxResult(txtResponse, options);
+    }
+
+    async getPoolFundingStatus(apiToken:string):Promise<BigNumber> {
+      return this.contract.getPoolFundingStatus(apiToken);
+    }
+
+    async togglePoolActiveStatus(apiToken:string, options?:TransactionOptions): Promise<EthersTransactionResult> {
+      const txtResponse = await this.contract.togglePoolActiveStatus(apiToken);
+      return toTxResult(txtResponse, options);
+    }
+
+    async getPoolActiveStatus(apiToken:string):Promise<Boolean> {
+      return this.contract.getPoolActiveStatus(apiToken);
+    }
+
     async claimFunds(apiToken:string, options?:TransactionOptions): Promise<EthersTransactionResult> {
       const txtResponse = await this.contract.claimFunds(apiToken);
       return toTxResult(txtResponse, options);
@@ -74,14 +98,8 @@ class InvestmentPoolsEthersV5Contract implements InvestmentPoolsContract {
       return this.contract.getInvestorPoolList(investor);
     }
 
-    
-    // Only Owner called functions, will be removed in future
-    async updatetPoolFundingStatus(apiToken:string, poolFundingStatus:BigNumber, options?:TransactionOptions): Promise<EthersTransactionResult> {
-      const txtResponse = await this.contract.updatetPoolFundingStatus(apiToken, poolFundingStatus);
-      return toTxResult(txtResponse, options);
-    }
-    async togglePoolActiveStatus(apiToken:string, options?:TransactionOptions): Promise<EthersTransactionResult> {
-      const txtResponse = await this.contract.togglePoolActiveStatus(apiToken);
+    async claimYourAPIToken(apiToken:string, options?:TransactionOptions): Promise<EthersTransactionResult> {
+      const txtResponse = await this.contract.claimYourAPIToken(apiToken);
       return toTxResult(txtResponse, options);
     }
 }
