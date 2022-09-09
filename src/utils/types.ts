@@ -71,11 +71,17 @@ export interface Claim {
   timestamp: BigNumber
 }
 
+export interface MilestoneClaim {
+  claimedAmount: BigNumber
+  approvedTimestamp: BigNumber
+  claimedTimestamp: BigNumber
+}
+
 export interface PoolInfo {
   poolIndex:BigNumber
         
   startDate:BigNumber
-  duration:BigNumber
+  endDate:BigNumber
   tokenPrice:BigNumber
   tokensToBeIssued:BigNumber
   minimumInvestmentRequired:BigNumber
@@ -87,8 +93,10 @@ export interface PoolInfo {
   poolActive:boolean
 
   totalFundApproved:BigNumber
-  fundsAvailableFromClaim:BigNumber
+  fundsAvailableFromClaim:BigNumber // Not used for now
   fundsClaimed:BigNumber
+
+  milestoneClaims: MilestoneClaim[]
 }
 
 export interface PoolInvestmentDetails {
@@ -99,8 +107,8 @@ export interface PoolInvestmentDetails {
 
   fundCollected: BigNumber
   tokenIssued: BigNumber
-  fundingFailed: boolean;
-
+  fundsAvailable: BigNumber
+  apiTokenAvailable: BigNumber
 }
 
 export interface InvestorDetails {
