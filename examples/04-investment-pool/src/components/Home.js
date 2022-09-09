@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { applyForInvestmentPool } from "../utils/apply-for-investment-pool";
 import { createInvestmentPool } from "../utils/create-investment-pool";
 import { getPoolInfoList } from "../utils/get-pool-info-list";
+import { getInvestorDetails } from "../utils/getInvestorDetails";
 import { getPoolInfoAndDetails } from "../utils/getPoolInfoAndDetails";
 import { investInPool } from "../utils/invest-in-pool";
 import { setupSDK } from "../utils/sdk-utils";
@@ -79,6 +80,10 @@ function Home() {
     await investInPool(library.getSigner(0));
   }
 
+  const investorDetails = async ()=>{
+    await getInvestorDetails(library.getSigner(0));
+  }
+
   return (
     <div>
       <div>Hello Web3 World</div><br/>
@@ -123,6 +128,14 @@ function Home() {
             poolInfoList();
           }}> 
           05 Get Pool Info List
+        </button>
+      </div><br/>
+
+      <div>
+        <button onClick={()=>{
+            investorDetails();
+          }}> 
+          06 Get Investor Details
         </button>
       </div><br/>
     </div>

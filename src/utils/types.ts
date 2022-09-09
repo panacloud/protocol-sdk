@@ -102,3 +102,17 @@ export interface PoolInvestmentDetails {
   fundingFailed: boolean;
 
 }
+
+export interface InvestorDetails {
+  investor: string
+  apiToken: string
+  investedAmount: BigNumber
+  claimableToken: BigNumber
+  claimedBlockNumber: BigNumber // This will works in case of both failure and success
+  
+  //In case of failure
+  amountClaimed: BigNumber
+
+  //In case of success
+  tokensClaimed: BigNumber
+}
