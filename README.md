@@ -178,14 +178,23 @@ export interface Claim {
 ### 8. Create Investment Pools (Only Admin or Manager can call this function) `Ethers`
 
 ```JS
+let whitelistingStartDate = new Date("1/19/1970");
+let whitelistingEndDate = new Date("2/15/1970");
 const investmentPoolsContract = panacloudSDK.getInvestmentPools();
 const transactionResult = await investmentPoolsContract.createInvestmentPool(
-    "0xb11846818eda46eca2e0481a4a4afebb4cac18d5", // User who created API token and DAO
-    "0xa1182eBDc63a68a5355235132aF9AD7555C39c03", // API Token Address
-    BigNumber.from((new Date()).getTime()),BigNumber.from(30).mul(24).mul(60).mul(60),BigNumber.from(100),
-    10000,BigNumber.from(7000), BigNumber.from(100));
+            "0xb11846818Eda46eCa2E0481A4A4AFEBB4CAC18d5",       // API developer address
+            "0xBc9656979A2486D3fBEB0D2D240cb9032456e245",       // API Token Address
+            BigNumber.from((new Date()).getTime()),             // Pool Start Date and time
+            BigNumber.from(30).mul(24).mul(60).mul(60),         // Pool Duration
+            ethers.utils.parseEther("1"),                       // Per API token price in terms of PanaCoin 
+            10000,                                              // Tokens to be issued
+            ethers.utils.parseEther("10"),                      // Minimum investment required in terms of PanaCon e.g if token price is 50 so 10 tokens * 50 = 500 so 500 panacoin minimum investment
+            BigNumber.from(100),                                // Number of Tokens single investor can buy 
+            BigNumber.from(whitelistingStartDate.getTime()),    // Whitelisting start date
+            BigNumber.from(whitelistingEndDate.getTime()));     // Whitelisting end date
+            // Note: pool duration should be long enough so cover whitelisting start and end date
 ```
-Pool Info Data Type
+Pool Info and Pool Investment Details Data Type
 ```JS
 export interface PoolInfo {
   poolIndex:BigNumber
@@ -205,6 +214,16 @@ export interface PoolInfo {
   totalFundApproved:BigNumber
   fundsAvailableFromClaim:BigNumber
   fundsClaimed:BigNumber
+}
+export interface PoolInvestmentDetails {
+  poolIndex:BigNumber
+  apiToken: string
+  whitelistingStartDate:BigNumber
+  whitelistingEndDate:BigNumber
+
+  fundCollected: BigNumber
+  tokenIssued: BigNumber
+  fundingFailed: boolean;
 }
 ```
 
@@ -226,4 +245,38 @@ const investmentPoolsContract = panacloudSDK.getInvestmentPools();
 const poolInfoList = await investmentPoolsContract.getPoolInfoList();
 
 console.log("poolInfoList = ",poolInfoList);
+```
+
+### 11. Get Specific Pool Info and Details  `Ethers`
+
+```JS
+const investmentPoolsContract = panacloudSDK.getInvestmentPools();
+const poolInfo = await investmentPoolsContract.getInvestmentPool("0xBc9656979A2486D3fBEB0D2D240cb9032456e245");
+const poolInfoDetails = await investmentPoolsContract.getPoolInvestmentDetails("0xBc9656979A2486D3fBEB0D2D240cb9032456e245");
+
+console.log("Pool info = ",poolInfo);
+console.log("Pool info Details = ",poolInfoDetails);
+```
+
+### 12. Invest In Pool `Ethers`
+
+```JS
+const investmentPoolsContract = panacloudSDK.getInvestmentPools();
+
+// Panacoin Token address on Rinkeby
+const panacoindToken = new ethers.Contract("0xbC810553892c750a7518438970216FC836294B91",PanaCoin,signer);
+console.log("panacoind token = ",panacoindToken);
+                                                    //Address of User
+const ownerPanaCoinBalance = await panacoindToken.balanceOf("<Investor Wallet Address>")
+console.log("Panacloud Balance for investor = ", ethers.utils.formatEther(ownerPanaCoinBalance.toString()));
+
+const txt1 = await panacoindToken.approve(investmentPoolsContract.getAddress(), ethers.utils.parseEther("10"));
+const receipt = txt1.wait();
+console.log("Approval done");
+
+const transactionResult = await investmentPoolsContract.investInPool("0xBc9656979A2486D3fBEB0D2D240cb9032456e245",ethers.utils.parseEther("10"));
+
+console.log("Transaction hash: ",transactionResult.hash);
+const transactionReceipt = await transactionResult.transactionResponse.wait();
+console.log("Transaction completed: ",transactionReceipt);
 ```
